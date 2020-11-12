@@ -6,7 +6,7 @@
 				</div>
 			
 				<div class="content-wrap">
-					<sidebar class="side-menu"></sidebar>
+					<sidebar></sidebar>
 					<app-main class="contents"></app-main>
 				</div>
 			</section>
@@ -16,8 +16,9 @@
 </template>
 
 <script>
-import { AppMain, Sidebar } from "./components";
+import { AppMain } from "./components";
 import Navbar from "../Navbar";
+import Sidebar from "../SideBar"
  
 export default {
       components:{
@@ -37,7 +38,7 @@ export default {
             border:1px solid #ff0000;
 
             .side-bar-container {
-                  width:300px;
+                  width:200px;
                   border:1px solid #ff0000;
             }
             .main-container {

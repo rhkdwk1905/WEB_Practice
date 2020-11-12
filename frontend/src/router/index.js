@@ -1,8 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import group01Router from "./modules/group01Router"
- import group02Router from "./modules/group02Router";
+import group02Router from "./modules/group02Router";
 import Home from "@/views/main/Home";
+import EditUser from "@/views/main/EditUser";
+import QnA from "@/views/main/QnA";
+import Contact from "@/views/main/Contact";
 import Login from "@/views/login";
 import homeLayout from "@/layout/home";
 Vue.use(VueRouter);
@@ -17,6 +20,18 @@ const constantRoutes = [
 			path: "",
 			name:"home",
 				component: Home,
+			},{
+			path: "/edituser",
+			name:"edituser",
+				component: EditUser,
+			},{
+			path: "/qna",
+			name:"qna",
+				component: QnA,
+			},{
+			path: "/contact",
+			name:"contact",
+				component: Contact,
 			},
 		]
 	},

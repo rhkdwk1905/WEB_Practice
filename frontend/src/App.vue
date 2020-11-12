@@ -1,5 +1,8 @@
 <template>
-  <div id="app">	
+  <div id="app">
+      <div @click="mouseClick()" >
+      <img id="img" style="cursor: pointer" to="/" src="./img/logo.jpg">
+      </div>
 	<router-view/>
   </div>
 </template>
@@ -27,5 +30,11 @@
       color: #42b983;
     }
   }
+}
+
+#img{
+  position:relative;
+  height:150px;
+  margin-bottom:10px;
 }
 </style>
