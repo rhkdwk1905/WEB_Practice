@@ -1,7 +1,9 @@
 <template>
   <div id="app">
       <div @click="mouseClick()" >
-      <img id="img" style="cursor: pointer" to="/" src="./img/logo.jpg">
+		  <router-link to="/">
+              <img id="img" style="cursor: pointer" src="./img/logo.jpg">
+       	  </router-link>
       </div>
 	<router-view/>
   </div>

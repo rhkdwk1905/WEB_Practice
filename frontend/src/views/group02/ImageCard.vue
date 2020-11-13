@@ -1,29 +1,39 @@
 <template>
 	<div>
-		<div class="card-wrap">
-			<div v-if="imageList && imageList.length>0">
-				<b-card-group deck>
-					<b-card v-for="(item, index) in imageList" :key="index" 
-						:title="item.title" 
-						:img-src="item.url" img-alt="Image" img-top>
-					<b-card-text>
-						{{item.text}}
-					</b-card-text>
-					<template v-slot:footer>
-						<small class="text-muted">{{item.date}}</small>
-					</template>
-					</b-card>
-				</b-card-group>
-			</div>
-			<div v-else class="no-data" style="height: 565px;">
-				No Data
-			</div>
-		</div>
-	</div>
+  <b-card no-body>
+    <b-tabs variant="primary">
+      <b-tab no-body title="Picasdfture 1">
+        <b-card-img bottom src="https://picsum.photos/600/200/?image=21" alt="Image 21"></b-card-img>
+        <b-card-footer>Picture 1 footer</b-card-footer>
+      </b-tab>
+
+      <b-tab no-body title="Picture 2">
+        <b-card-img bottom src="https://picsum.photos/600/200/?image=25" alt="Image 25"></b-card-img>
+        <b-card-footer>Picture 2 footer</b-card-footer>
+      </b-tab>
+
+      <b-tab no-body title="Picture 3">
+        <b-card-img bottom src="https://picsum.photos/600/200/?image=26" alt="Image 26"></b-card-img>
+        <b-card-footer>Picture 3 footer</b-card-footer>
+      </b-tab>
+
+      <b-tab title="Text">
+        <b-card-title>This tab does not have the <code>no-body</code> prop set</b-card-title>
+        <b-card-text>
+          Quis magna Lorem anim amet ipsum do mollit sit cillum voluptate ex nulla tempor. Laborum
+          consequat non elit enim exercitation cillum aliqua consequat id aliqua. Esse ex
+          consectetur mollit voluptate est in duis laboris ad sit ipsum anim Lorem. Incididunt
+          veniam velit elit elit veniam Lorem aliqua quis ullamco deserunt sit enim elit aliqua
+          esse irure.
+        </b-card-text>
+      </b-tab>
+    </b-tabs>
+  </b-card>
+</div>
 </template>
 
 <script>
-	import imageData from "@/data/imageData";
+	//import imageData from "@/data/imageData";
 	export default {
 		computed: {
 			imageList(){
@@ -32,3 +42,9 @@
 		}
 	};
 </script>
+
+<style lang="scss" scoped>
+.nav-tabs .nav-link{
+  color:black !important;
+}
+</style>

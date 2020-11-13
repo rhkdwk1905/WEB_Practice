@@ -6,7 +6,8 @@ import Home from "@/views/main/Home";
 import EditUser from "@/views/main/EditUser";
 import QnA from "@/views/main/QnA";
 import Contact from "@/views/main/Contact";
-import Login from "@/views/login";
+import Login from "@/views/login/Login";
+import SignUp from "@/views/login/SignUp";
 import homeLayout from "@/layout/home";
 Vue.use(VueRouter);
 
@@ -39,6 +40,10 @@ const constantRoutes = [
 		path: "/login",
 		name: "login",
 		component: Login
+	},{
+		path: "/signup",
+		name: "signup",
+		component: SignUp
 	}
 ]
 

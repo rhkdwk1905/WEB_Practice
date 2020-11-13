@@ -25,6 +25,8 @@
 
 					<b-navbar-nav class="ml-auto">
 						<b-nav-item key="login" right
+							:to="{name:'signup'}" active-class="active" exact>Sign Up</b-nav-item>
+						<b-nav-item key="login" right
 							:to="{name:'login'}" active-class="active" exact>Login</b-nav-item>
 					</b-navbar-nav>
 				</b-collapse>
