@@ -45,7 +45,13 @@
 				   })
 				   .then(
 						(response)=>{
-					    alert(this.editData.userId+"님 환영합니다!")
+							if(response.data == 'user_not_founded'){
+								alert("아이디/비밀번호가 일치하지 않습니다.");
+								return;
+							}
+					    alert(this.editData.userId+"님 환영합니다!");
+						this.$store.commit('userLogin', this.editData);
+						this.$router.push({path: '/'});
 				   },
 						(error)=>{
 					    alert(error.response.data.error)
