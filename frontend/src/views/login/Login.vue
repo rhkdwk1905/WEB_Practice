@@ -5,16 +5,12 @@
                   <form class="col-4">
                         <div class="form-group">
                               <label class="box">User id</label>
-                              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-							  	v-model="editData.userId"
-							  >
-                              <small id="emailHelp" class="form-text text-muted">성균관대학교 아이디와 연동되지 않습니다.</small>
+                              <input type="text" class="form-control" aria-describedby="IdHelp" v-model="editData.userId">
+                              <small id="IdHelp" class="form-text text-muted">성균관대학교 아이디와 연동되지 않습니다.</small>
                         </div>
                         <div class="form-group">
                               <label class="box">Password</label>
-                              <input type="password" class="form-control" id="exampleInputPassword1"
-							  v-model="editData.password"
-							  >
+                              <input type="password" class="form-control" v-model="editData.password">
                         </div>
                         <div class="form-group form-check">
                               <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -43,9 +39,21 @@
          },
          
          methods:{
-               onLogin(event){                     
-                  console.log("login 시도 ", this.editData);
-               }
+               onLogin(){
+				   this.$http.post('/api/login/checkLogin', {
+					   user: this.editData
+				   })
+				   .then(
+						(response)=>{
+					    alert(this.editData.userId+"님 환영합니다!")
+				   },
+						(error)=>{
+					    alert(error.response.data.error)
+				   })
+				   .catch(error => {
+					   alert(error)
+				   })
+			   }
          }
       }
 </script>
