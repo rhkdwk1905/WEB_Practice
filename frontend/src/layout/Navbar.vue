@@ -23,11 +23,12 @@
 						</template>
 					</b-navbar-nav>
 
-					<b-navbar-nav class="ml-auto">
-						<b-nav-item key="login" right
-							:to="{name:'signup'}" active-class="active" exact>Sign Up</b-nav-item>
-						<b-nav-item key="login" right
-							:to="{name:'login'}" active-class="active" exact>Login</b-nav-item>
+          <b-navbar-nav class="ml-auto" v-if="checkLogin">
+            <b-nav-item key="login" right @click="logout" active-class="active" v-if="this.checkLogin" exact>Logout</b-nav-item>
+          </b-navbar-nav>
+					<b-navbar-nav class="ml-auto" v-else>
+						<b-nav-item right	:to="{name:'signup'}" active-class="active" exact>Sign Up</b-nav-item>
+						<b-nav-item right	:to="{name:'login'}" active-class="active" exact>Login</b-nav-item>
 					</b-navbar-nav>
 				</b-collapse>
 			</template> 
@@ -36,32 +37,48 @@
 
 <script>
 	export default {
-		
+    created(){
+      this.checkLogin =  this.$store.state.checkLogin
+    },
+		methods:{
+      logout(){
+        this.$store.commit('userLogout');
+        this.$router.push({path: '/'});
+        location.reload();
+      }
+    },
 		data(){
 			return {
-				 menuList:[{
-					name:"home",
-                    label: "홈"
-                },{
-                    name:"group01Home",
-					label: "그룹01",
-					children:[{
-						name:"group01Board",
-						label: "board"
-					},{
-						name:"group01Sample",
-						label: "sample"
-					}]
-                },{
-                    name: "group02ImageCard",
-                    label: "그룹02"
-                }],
+        checkLogin: this.$store.state.checkLogin,
+				 menuList:[
+           {
+					   name:"home",
+             label: "홈"
+           },{
+             name:"group01Home",
+					   label: "그룹01",
+					   children:[
+               {
+						     name:"group01Board",
+						     label: "board"
+					     },{
+						     name:"group01Sample",
+						     label: "sample"
+					   }]
+           },{
+             name: "group02ImageCard",
+             label: "그룹02"
+           }]
 			}
 		}
 	}
 </script>
 
 <style scoped>
+  .li{
+    list-style-type: none;
+  }
+  
 	.active {
 		color:#ffffff !important;
 	}

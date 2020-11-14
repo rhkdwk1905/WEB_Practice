@@ -1,16 +1,13 @@
 <template>
 	<b-list-group v-if="checkLogin">
-		<span class="welcome">{{this.userName}}님<br>환영합니다!</span>
+		<span class="welcome">{{userName}}님<br>환영합니다!</span>
   		<b-list-group-item cursor: pointer to="/edituser">회원정보수정</b-list-group-item>
   		<b-list-group-item cursor: pointer to="/qna">문의하기</b-list-group-item>
   		<b-list-group-item cursor: pointer to="/contact">Contact</b-list-group-item>
 	</b-list-group>
 
-	<b-list-group v-else cursor: pointer to="/login">
-		<span class="welcome">로그인이<br>필요합니다</span>
-  		<b-list-group-item>회원정보수정</b-list-group-item>
-  		<b-list-group-item>문의하기</b-list-group-item>
-  		<b-list-group-item >Contact</b-list-group-item>
+	<b-list-group v-else>
+		<span class="welcome" cursor: pointer to="/login">로그인이<br>필요합니다</span>
 	</b-list-group>
 </template> 
 
@@ -18,16 +15,15 @@
 	export default {
 		created(){
 			if(this.$store.state.checkLogin == true){
-				this.userId = this.$store.state.userIdToken;
-				this.userName = this.$store.state.userNameToken;
-				this.checkLogin = true;
+				this.userId = this.$store.state.dataToken.userId;
+				this.userName = this.$store.state.dataToken.name;
 			}
 		},
 		data(){
 			return {
 				userId:"",
 				userName:"",
-				checkLogin: false
+				checkLogin: this.$store.state.checkLogin
 			}
 		},
 		method: {
@@ -50,5 +46,6 @@
 		border-style: outset;
 		min-height:90px;
 		padding-top:15px;
+    width: 200px;
 	}
 </style>

@@ -1,53 +1,55 @@
+// var createError = require('http-errors');
 const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-mongoose.Promise = global.Promise; // mongoDB 버전 4.11 이상부터 해주어야 에러 안남
+var path = require('path');
+const bodyParser=require('body-parser');
+//var logger = require('morgan');
+const app = express();
 
-const mongoDB = 'mongodb://127.0.0.1:27017/test' // 호스트:포트/DB명
-const promise = mongoose.connect(mongoDB, {
-  useMongoClient: true //mongoDB 버전 4.11 이상부터 해주어야 에러 안남
+
+const ip='0.0.0.0';
+const port='8000';
+
+app.listen(port,ip, () => {
+  console.log('ip : '+ip+' port number : '+port);
+  console.log('WEB_PROJECT');
+	// api
+app.use('/api',require('./api/api_bunch'));
+  
 });
 
-var createError = require('http-errors');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
 
-//여기에 데이터 라우터 추가
-var indexRouter = require('./routes/index');
-var loginRouter = require('./routes/login');
-
-var app = express();
-app.use(require('connect-history-api-fallback')());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+//app.set('view engine', 'pug');
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.locals.pretty=true;
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+//app.use(logger('dev'));
+
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: false }));
+// //app.use(cookieParser());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-//여기에 데이터 라우터 사용
-app.use('/', indexRouter);
-app.use('/api/', loginRouter);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+// // catch 404 and forward to error handler
+// app.use(function(req, res, next) {
+//   next(createError(404));
+// });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+// // error handler
+// app.use(function(err, req, res, next) {
+//   // set locals, only providing error in development
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+//   // render the error page
+//   res.status(err.status || 500);
+//   res.render('error');
+// });
 
-module.exports = app;
+// module.exports = app;

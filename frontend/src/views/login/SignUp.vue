@@ -26,11 +26,11 @@
                      editData:{
                         userId:"",
                         userEmail:"",
-						phone:"",
+												phone:"",
                         name:"",
-						studentID:"",
+                      	studentID:"",
                         password:"",
-						confirm:""
+	                      confirm:""
                      } 
                }
          },
@@ -45,10 +45,10 @@
 					   user: this.editData
 				   })
 				   .then((response)=>{
-					   if(response.data.result === 0){
-						   alert('Error, please try again')
+					   if(response.data == 'duplicate_id'){
+						   alert('이미 존재하는 아이디입니다')
 					   }
-					   if(response.data.result === 1){
+					   if(response.data == 'save_signup'){
 						   alert('회원가입을 환영합니다!')
 						   this.$router.push('/login')
 					   }

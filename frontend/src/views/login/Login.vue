@@ -3,6 +3,10 @@
             <div class="row">
                   <div class="col-4"></div>
                   <form class="col-4">
+                    <div class="form-group">
+                              <label class="box">Name</label>
+                              <input type="text" class="form-control" v-model="editData.name">
+                        </div>
                         <div class="form-group">
                               <label class="box">User id</label>
                               <input type="text" class="form-control" aria-describedby="IdHelp" v-model="editData.userId">
@@ -32,6 +36,7 @@
          data(){
                return {
                      editData:{
+                        name:"",
                         userId:"",
                         password:""
                      } 
@@ -39,17 +44,21 @@
          },
          
          methods:{
-               onLogin(){
-				   this.$http.post('/api/login/checkLogin', {
+           onLogin(){
+				   this.$http.post('/api/login', {
 					   user: this.editData
 				   })
 				   .then(
 						(response)=>{
-							if(response.data == 'user_not_founded'){
-								alert("아이디/비밀번호가 일치하지 않습니다.");
+							if(response.data == 'no_id'){
+								alert("존재하지 않는 회원입니다");
 								return;
 							}
-					    alert(this.editData.userId+"님 환영합니다!");
+              if(response.data == 'pw_incorrect'){
+								alert("비밀번호가 다릅니다");
+								return;
+							}
+					    alert(this.editData.name+"님 환영합니다!");
 						this.$store.commit('userLogin', this.editData);
 						this.$router.push({path: '/'});
 				   },

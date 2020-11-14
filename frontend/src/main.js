@@ -3,11 +3,11 @@ import './plugins/axios'
 import router from "./router";
 import App from "./App";
 import axios from 'axios'
+import "./common/plugins/bootstrap-vue";
+import { store } from './store'
 
 Vue.prototype.$http = axios
 
-import "./common/plugins/bootstrap-vue";
-import { store } from './store'
 
 new Vue({
   router,
