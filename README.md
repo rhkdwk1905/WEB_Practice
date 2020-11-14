@@ -11,6 +11,11 @@
 3. npm run serve 를 이용해 웹사이트를 포트에 올린다.(안되면 npm을 설치하면 된다.)
 4. 해당 포트에 들어가서 사이트를 확인한다.
 
+//백엔드에서 서버까지 여는 기준
+1. 만일 frontend 수정이 있었다면 npm run build를 한다.
+2. 이후 backend에서 npm start를 해서 서버를 연다.
+3. 해당 포트에 들어가서 사이트를 확인한다.
+
 찾아볼만한 사이트
 1. https://kdydesign.github.io/2019/04/22/vue-cli3-tutorial/
 VUE설치부터 옵션 설치까지 자세하게 안내되어 있다.
