@@ -55,30 +55,51 @@
 					   name:"home",
              label: "홈"
            },{
-             name:"group01Home",
-					   label: "그룹01",
+             name:"Community",
+					   label: "커뮤니티",
 					   children:[
                {
-						     name:"group01Board",
-						     label: "board"
+						     name:"CommunityBoard",
+						     label: "게시판"
 					     },{
-						     name:"group01Sample",
-						     label: "sample"
-					   }]
+						     name:"CommunityTodo",
+						     label: "진행작업"
+					     }]
            },{
-             name: "group02ImageCard",
-             label: "그룹02"
+             name: "Library",
+             label: "Library",
+             children:[
+               {
+						     name:"LibraryLearnVue",
+						     label: "Vue"
+					     },{
+						     name:"LibraryLearnServer",
+						     label: "Server"
+					     },{
+						     name:"LibraryLearnWork",
+						     label: "Workstation"
+					     },{
+						     name:"LibraryLearnApp",
+						     label: "Application"
+					     }]
+           },{
+             name: "Contact",
+             label: "Contact",
+					   children:[
+               {
+						     name:"ContactLocation",
+						     label: "Location"
+					     },{
+						     name:"ContactMembers",
+						     label: "Members"
+					   }]
            }]
 			}
 		}
 	}
 </script>
 
-<style scoped>
-  .li{
-    list-style-type: none;
-  }
-  
+<style scoped>  
 	.active {
 		color:#ffffff !important;
 	}

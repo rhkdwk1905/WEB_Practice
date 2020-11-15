@@ -1,7 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import group01Router from "./modules/group01Router"
+import group01Router from "./modules/group01Router";
 import group02Router from "./modules/group02Router";
+import group03Router from "./modules/group03Router";
 import Home from "@/views/main/Home";
 import EditUser from "@/views/main/EditUser";
 import QnA from "@/views/main/QnA";
@@ -54,6 +55,7 @@ const router = new VueRouter({
 		...constantRoutes,
 		group01Router,
 		group02Router,
+    group03Router,
 	]
 });
 

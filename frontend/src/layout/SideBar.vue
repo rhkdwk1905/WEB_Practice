@@ -46,6 +46,6 @@
 		border-style: outset;
 		min-height:90px;
 		padding-top:15px;
-    width: 200px;
+    width: 150px;
 	}
 </style>

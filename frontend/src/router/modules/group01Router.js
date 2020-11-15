@@ -1,25 +1,32 @@
 import Group01Layout from "@/layout/group01";
 import Board from "@/views/group01/Board";
-import Sample from "@/views/group01/Sample";
+import Todo from "@/views/group01/Todo";
+import Write from "@/views/group01/Write";
 
 const group01Router = { 
-	path:"/group01",
-	name:"group01",
+	path:"/community",
+	name:"Community",
 	component:Group01Layout,
 	children: [
 		{
 			path: "",			
-			redirect: "board",
+			redirect: "/community/board",
 		},
 		{
-			path: "board",
-			name:"group01Board",
+			path: "/community/board",
+			name:"CommunityBoard",
 			component: Board,
-		},{
-			path: "sample",
-			name:"group01Sample",
-			component: Sample,
 		},
+    {
+			path: "/community/todo",
+			name:"CommunityTodo",
+			component: Todo,
+		},
+    {
+			path: "/community/write",
+			name:"CommunityWrite",
+			component: Write,
+		}
 	],
 }
 

@@ -132,7 +132,7 @@ router.post('/login',(req,res)=>{
 	console.dir(req.body.user);
 	console.log(req.body.user.userId+" "+req.body.user.password);
 	
-	UserModel.findOne({'userId':req.body.user.userId},function(err,data){
+	UserModel.findOne({'userId':req.body.user.userId, 'name':req.body.user.name},function(err,data){
 		if(err){
 			console.log(err);
 			res.status(500).send('Internal Server Error');
@@ -200,42 +200,17 @@ router.post('/signup',(req,res)=>{
 	
 })
 
-
+//탭 제목 글쓴이 날짜 조회
 //@route POST /post
 //@desc upload post to DB
 router.post('/post',(req,res)=>{
-	let counter=0;
-	let name='posts';
-	console.log('post upload api call')
-	
-	CounterModel.findOne({'id':name},function(err,data){
-		if(err){
-			console.log(err);
-			res.status(500).send('Internal Server Error');
-		}else{
-			if(data==null){
-				let new_count_data=new CounterModel();
-				new_count_data.id="posts";
-				new_count_data.count=0;
-				console.log(new_count_data);
-				new_count_data.save(function(err,data){
-					if(err){
-						console.log(err);
-						res.status(500).send('Internal Server Error');
-					}else{
-						console.log('make first post');
-					}
-				});
-			}
-			
-			 console.dir(data);
+      console.dir(req.body.post);
 			let new_data=new PostModel();
-			console.log('2');
-			new_data.id=req.body.id;
-			new_data.title=req.body.title;
-			new_data.content=req.body.content;	
-			new_data.date=req.body.date;
-			new_data.index=data.count+1;
+      new_data.class=req.body.post.class;
+			new_data.title=req.body.post.title;
+			new_data.id=req.body.post.id;
+      new_data.name=req.body.post.name;
+			new_data.contents=req.body.post.contents;
 			new_data.save(function(err,data){
 					if(err){
 						console.log(err);
@@ -244,22 +219,9 @@ router.post('/post',(req,res)=>{
 						console.log('save post ok');
 					}
 			});
-			
-			data.count++;
-			data.save(function(err,data){
-				if(err){
-					console.log(err);
-					res.status(500).send('Internal Server Error');
-				}else{
-					console.log('save ok');
-					return res.json('save count ok');
-				}
-			});
-
-		}
-	});
-	
 })
+
+
 //------------------------------------Delete func-------------------------//
 
 //@route DELETE /deletePost/:posttitle

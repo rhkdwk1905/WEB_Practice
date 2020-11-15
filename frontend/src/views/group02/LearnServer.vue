@@ -4,7 +4,7 @@
     <b-tabs variant="primary">
       <b-tab no-body title="Picasdfture 1">
         <b-card-img bottom src="https://picsum.photos/600/200/?image=21" alt="Image 21"></b-card-img>
-        <b-card-footer>Picture 1 footer</b-card-footer>
+        <b-card-footer>서버</b-card-footer>
       </b-tab>
 
       <b-tab no-body title="Picture 2">

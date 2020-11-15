@@ -1,16 +1,11 @@
 <template>
 	<div>
 		<div class="tblWrap">
-    		<b-table 
-				id="my-table"
-    			:items="items"
-    			:per-page="perPage"
-    			:current-page="currentPage">
-			</b-table>
+    		<b-table :items="items" :per-page="perPage" :current-page="currentPage"></b-table>
 		</div>
 			<div class="btnWrap">
 				<div class="right">
-					<b-button variant="primary" class="normal">등록</b-button>
+					<b-button variant="primary" @click.prevent="gotoWrite()">등록</b-button>
 				</div>
 			</div>
 		<div class="pagingWrap">
@@ -25,34 +20,31 @@
 </template>
 
 <script>
-
-	import boardData from "@/data/boardData";
-
 	export default {
+    methods:{
+      gotoWrite(){
+        this.$router.push({path: '/community/write'});
+      }
+    },
 		computed: {
-			boardItemList(){
-				return boardData;
-			}			
 		},
 		data(){
 			return {
 				perPage: 7,
 				currentPage: 3,//pagination 
-                selectedDate: '',//datepicker
-				fields: [ {key:'no', label:'번호'}, {key:"title", label:'제목'}, {key:'created', label:'등록일'}, {key: 'hits', label: '조회수'}],
 				items: [
-          			{ no: 1, title: 'Dickerson', created: 'Macdonald', hits:60 },
-          			{ no: 2, title: 'Dickerson', created: 'Macdonald', hits:50 },
-          			{ no: 3, title: 'Dickerson', created: 'Macdonald', hits:40 },
-					{ no: 4, title: 'Dickerson', created: 'Macdonald', hits:60 },
-          			{ no: 5, title: 'Dickerson', created: 'Macdonald', hits:50 },
-          			{ no: 6, title: 'Dickerson', created: 'Macdonald', hits:40 },
-					{ no: 7, title: 'Dickerson', created: 'Macdonald', hits:60 },
-          			{ no: 8, title: 'Dickerson', created: 'Macdonald', hits:50 },
-          			{ no: 9, title: 'Dickerson', created: 'Macdonald', hits:40 },
-					{ no: 10, title: 'Dickerson', created: 'Macdonald', hits:60 },
-          			{ no: 11, title: 'Dickerson', created: 'Macdonald', hits:50 },
-          			{ no: 12, title: 'Dickerson', created: 'Macdonald', hits:40 }
+          			{ 탭:'공지', 제목: 'Dickerson', 글쓴이: 'Macdonald', 날짜:Date.now(), 조회:60 },
+          			{ 탭:'공지', 제목: 'Dickerson', 글쓴이: 'Macdonald', 날짜:Date.now(), 조회:60 },
+          			{ 탭:'공지', 제목: 'Dickerson', 글쓴이: 'Macdonald', 날짜:Date.now(), 조회:60 },
+                { 탭:'공지', 제목: 'Dickerson', 글쓴이: 'Macdonald', 날짜:Date.now(), 조회:60 },
+          			{ 탭:'공지', 제목: 'Dickerson', 글쓴이: 'Macdonald', 날짜:Date.now(), 조회:60 },
+          			{ 탭:'공지', 제목: 'Dickerson', 글쓴이: 'Macdonald', 날짜:Date.now(), 조회:60 },
+                { 탭:'공지', 제목: 'Dickerson', 글쓴이: 'Macdonald', 날짜:Date.now(), 조회:60 },
+          			{ 탭:'공지', 제목: 'Dickerson', 글쓴이: 'Macdonald', 날짜:Date.now(), 조회:60 },
+          			{ 탭:'공지', 제목: 'Dickerson', 글쓴이: 'Macdonald', 날짜:Date.now(), 조회:60 },
+					      { 탭:'공지', 제목: 'Dickerson', 글쓴이: 'Macdonald', 날짜:Date.now(), 조회:60 },
+          			{ 탭:'공지', 제목: 'Dickerson', 글쓴이: 'Macdonald', 날짜:Date.now(), 조회:60 },
+          			{ 탭:'공지', 제목: 'Dickerson', 글쓴이: 'Macdonald', 날짜:Date.now(), 조회:60 }
         		]
 			}
 		},

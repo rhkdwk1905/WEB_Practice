@@ -1,4 +1,5 @@
 var Schemas={};
+
 //just schema ver
 //use app.js const mongo=require('moongoose')
 
@@ -32,13 +33,14 @@ Schemas.createUserSchema=function(mongo){
 
 Schemas.createPostSchema=function(mongo){
 	//mongodb part
-	var PostSchema = mongo.Schema({
-		id: String,
+	var PostSchema = new mongo.Schema({
+    class: String,
 		title: String,
+		id: String,
+    name: String,
 		date: {type: Date, default: Date.now()},
-		content: String,
-		index: Number,
-		views: {type: Number, default: 0}
+		views: {type: Number, default: 0},
+		contents: String
 	});
 	
 	console.log('On PostSchema');
